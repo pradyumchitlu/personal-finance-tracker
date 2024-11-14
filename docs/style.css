@@ -1,0 +1,152 @@
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --success-color: #2ecc71;
+    --light-bg: #ecf0f1;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--light-bg);
+}
+
+.navbar {
+    background-color: var(--primary-color);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.navbar-brand, .nav-link {
+    color: white !important;
+}
+
+.nav-link:hover {
+    color: var(--secondary-color) !important;
+    transform: translateY(-1px);
+    transition: all 0.3s ease;
+}
+
+.hero {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 100px 0;
+    box-shadow: inset 0 -5px 10px rgba(0,0,0,0.1);
+}
+
+.feature-card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: white;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.feature-icon {
+    font-size: 2.5rem;
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover .feature-icon {
+    transform: scale(1.1);
+}
+
+.cta-section {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 80px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(52, 152, 219, 0.1) 0%, rgba(52, 152, 219, 0) 100%);
+    z-index: 1;
+}
+
+.cta-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+.btn-primary {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+    padding: 10px 30px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.tech-stack {
+    background-color: white;
+}
+
+.tech-stack i {
+    transition: transform 0.3s ease;
+}
+
+.tech-stack .col-md-3:hover i {
+    transform: scale(1.1);
+}
+
+.features-detail {
+    background-color: white;
+}
+
+.features-detail h3 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+.features-detail li {
+    margin-bottom: 0.75rem;
+    transition: transform 0.3s ease;
+}
+
+.features-detail li:hover {
+    transform: translateX(5px);
+}
+
+footer {
+    background-color: var(--primary-color) !important;
+}
+
+footer a {
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: var(--secondary-color) !important;
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 60px 0;
+    }
+    
+    .feature-card {
+        margin-bottom: 20px;
+    }
+    
+    .cta-section {
+        padding: 60px 0;
+    }
+}
