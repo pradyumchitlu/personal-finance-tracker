@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="jumbotron text-center">
+    <h1 class="display-4">Personal Finance Tracker</h1>
+    <p class="lead">Take control of your finances with our easy-to-use tracking tool.</p>
+    <hr class="my-4">
+    <p>Track income, expenses, set budgets, and gain insights into your spending habits.</p>
+    <div class="d-flex justify-content-center">
+        <a class="btn btn-primary btn-lg mx-2" href="{{ url_for('auth.register') }}" role="button">Get Started</a>
+        <a class="btn btn-outline-secondary btn-lg mx-2" href="{{ url_for('auth.login') }}" role="button">Login</a>
+    </div>
+</div>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-4">
+            <h3>Track Expenses</h3>
+            <p>Record and categorize your daily expenses with ease.</p>
+        </div>
+        <div class="col-md-4">
+            <h3>Set Budgets</h3>
+            <p>Create monthly budgets for different spending categories.</p>
+        </div>
+        <div class="col-md-4">
+            <h3>Visualize Spending</h3>
+            <p>Get insights through interactive charts and reports.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

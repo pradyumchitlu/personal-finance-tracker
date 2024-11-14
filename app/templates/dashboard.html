@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-4">
+        <div class="card mb-4">
+            <div class="card-header">Financial Summary</div>
+            <div class="card-body">
+                <h5>Total Income: ${{ "{:.2f}".format(income) }}</h5>
+                <h5>Total Expenses: ${{ "{:.2f}".format(expenses) }}</h5>
+                <h5>Net Balance: ${{ "{:.2f}".format(income - expenses) }}</h5>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-8">
+        <div class="card mb-4">
+            <div class="card-header">Recent Transactions</div>
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Category</th>
+                            <th>Description</th>
+                            <th>Amount</th>
+                            <th>Type</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for transaction in transactions %}
+                        <tr>
+                            <td>{{ transaction.date.strftime('%Y-%m-%d') }}</td>
+                            <td>{{ transaction.category }}</td>
+                            <td>{{ transaction.description }}</td>
+                            <td>${{ "{:.2f}".format(transaction.amount) }}</td>
+                            <td>{{ transaction.transaction_type.capitalize() }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">Budget Status</div>
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Budget</th>
+                            <th>Current Spending</th>
+                            <th>Remaining</th>
+                            <th>Progress</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for budget in budget_status %}
+                        <tr>
+                            <td>{{ budget.category }}</td>
+                            <td>${{ "{:.2f}".format(budget.budget_amount) }}</td>
+                            <td>${{ "{:.2f}".format(budget.current_spending) }}</td>
+                            <td>${{ "{:.2f}".format(budget.remaining) }}</td>
+                            <td>
+                                <div class="progress">
+                                    <div class="progress-bar 
+                                        {% if budget.percentage_used <= 75 %}bg-success
+                                        {% elif budget.percentage_used <= 90 %}bg-warning
+                                        {% else %}bg-danger
+                                        {% endif %}" 
+                                        role="progressbar" 
+                                        style="width: {{ budget.percentage_used }}%"
+                                        aria-valuenow="{{ budget.percentage_used }}" 
+                                        aria-valuemin="0" 
+                                        aria-valuemax="100">
+                                        {{ "{:.1f}%".format(budget.percentage_used) }}
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
